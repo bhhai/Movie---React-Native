@@ -20,7 +20,12 @@ export default class BottomTab extends Component {
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({color}) => (
-              <FontAwesome5 name={'home'} color={color} size={26} />
+              <FontAwesome5
+                name={'home'}
+                color={color}
+                size={26}
+                style={{width: 33}}
+              />
             ),
           }}
         />
@@ -30,7 +35,12 @@ export default class BottomTab extends Component {
           options={{
             tabBarLabel: 'Movies',
             tabBarIcon: ({color}) => (
-              <FontAwesome5 name={'comments'} color={color} size={26} />
+              <FontAwesome5
+                name={'youtube'}
+                color={color}
+                size={26}
+                style={{width: 33}}
+              />
             ),
           }}
         />
@@ -40,7 +50,12 @@ export default class BottomTab extends Component {
           options={{
             tabBarLabel: 'TV Series',
             tabBarIcon: ({color}) => (
-              <FontAwesome5 name={'comments'} color={color} size={26} />
+              <FontAwesome5
+                name={'tv'}
+                color={color}
+                size={26}
+                style={{width: 33}}
+              />
             ),
           }}
         />
