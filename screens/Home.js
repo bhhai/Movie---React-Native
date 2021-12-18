@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
-import tmdbApi, {movieType} from '../api/tmdbApi';
+import tmdbApi, {category, movieType} from '../api/tmdbApi';
 import ButtonComponent from '../components/ButtonComponent';
 import CategoryList from '../components/CategoryList';
 import HomeSlide from '../components/HomeSlide';
@@ -16,8 +16,10 @@ import HomeSlide from '../components/HomeSlide';
 let HEIGHT = Dimensions.get('window').height;
 let WIDTH = Dimensions.get('window').width;
 
-const Home = () => {
+const Home = ({navigation}) => {
   const [movies, setMovies] = useState([]);
+  const [movieList, setMovieList] = useState([]);
+  const [movieTopRate, setMovieTopRate] = useState([]);
 
   useEffect(() => {
     const getMovies = async () => {
@@ -26,6 +28,7 @@ const Home = () => {
         var response = await tmdbApi.getMoviesList(movieType.popular, {
           params,
         });
+        setMovieList(response.results);
         setMovies(response.results.slice(0, 4));
       } catch (error) {
         console.log('Fetch data error: ', error);
@@ -49,7 +52,45 @@ const Home = () => {
             <Text style={styles.categoryTitle}>Trending Movies</Text>
             <FontAwesome5Icon name={'angle-right'} color={'#fff'} size={26} />
           </View>
-          <CategoryList />
+          <CategoryList
+            category={category.movie}
+            type={movieType.popular}
+            navigation={navigation}
+          />
+        </View>
+        <View style={styles.category}>
+          <View style={styles.categoryHeader}>
+            <Text style={styles.categoryTitle}>Top Rated Movies</Text>
+            <FontAwesome5Icon name={'angle-right'} color={'#fff'} size={26} />
+          </View>
+          <CategoryList
+            category={category.movie}
+            type={movieType.top_rated}
+            navigation={navigation}
+          />
+        </View>
+
+        <View style={styles.category}>
+          <View style={styles.categoryHeader}>
+            <Text style={styles.categoryTitle}>Trending TV</Text>
+            <FontAwesome5Icon name={'angle-right'} color={'#fff'} size={26} />
+          </View>
+          <CategoryList
+            category={category.tv}
+            type={movieType.popular}
+            navigation={navigation}
+          />
+        </View>
+        <View style={styles.category}>
+          <View style={styles.categoryHeader}>
+            <Text style={styles.categoryTitle}>Top Rated TV</Text>
+            <FontAwesome5Icon name={'angle-right'} color={'#fff'} size={26} />
+          </View>
+          <CategoryList
+            category={category.tv}
+            type={movieType.top_rated}
+            navigation={navigation}
+          />
         </View>
       </ScrollView>
     </SafeAreaView>

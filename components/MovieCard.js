@@ -1,12 +1,32 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 
-const MovieCard = ({img}) => {
+const MovieCard = ({img, name, navigation, id, data}) => {
   console.log(img);
   return (
-    <View>
-      <Image source={{uri: img}} style={{height: 200, width: 100}} />
-    </View>
+    <TouchableOpacity
+      style={{marginRight: 25}}
+      onPress={() =>
+        navigation.navigate('MovieDetail', {
+          id: id,
+          data: data,
+        })
+      }>
+      <Image
+        source={{uri: img}}
+        style={{height: 200, width: 130, resizeMode: 'cover', borderRadius: 15}}
+      />
+      <Text
+        style={{
+          color: '#fff',
+          maxWidth: 130,
+          marginVertical: 8,
+          fontSize: 16,
+          fontWeight: 'bold',
+        }}>
+        {name}
+      </Text>
+    </TouchableOpacity>
   );
 };
 

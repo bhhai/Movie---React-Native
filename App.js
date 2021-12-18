@@ -1,20 +1,12 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import React, {useRef} from 'react';
-import {
-  Animated,
-  Dimensions,
-  ImageBackground,
-  StyleSheet,
-  Text,
-  TouchableWithoutFeedback,
-  View,
-} from 'react-native';
+import React from 'react';
+import {Button, Dimensions, StyleSheet} from 'react-native';
 import BottomTab from './components/BottomTab';
-import ButtonComponent from './components/ButtonComponent';
 import Header from './components/Header';
 import HomeSlide from './components/HomeSlide';
-import MovieCart from './components/MovieCart';
+import Home from './screens/Home';
+import MovieDetail from './screens/MovieDetail';
 
 let HEIGHT = Dimensions.get('window').height;
 let WIDTH = Dimensions.get('window').width;
@@ -45,8 +37,10 @@ const Stack = createNativeStackNavigator();
 const App = ({navigation}) => {
   return (
     <NavigationContainer>
-      <Header />
-      <BottomTab />
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Home1" component={Home1} />
+        <Stack.Screen name="MovieDetail" component={MovieDetail} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };
@@ -54,19 +48,10 @@ const App = ({navigation}) => {
 export default App;
 
 const Home1 = ({navigation}) => {
-  const handleMovieItemPress = movieId => {
-    console.log('App press id: ', movieId);
-    navigation.navigate('MovieDetail', {
-      id: movieId,
-      movieList: movies,
-    });
-  };
   return (
     <>
-      {/* <Header /> */}
-      <MovieCart data={movies} onPress={handleMovieItemPress} />
-
-      {/* <HomeSlide /> */}
+      <Header />
+      <Home navigation={navigation} />
       <BottomTab />
     </>
   );

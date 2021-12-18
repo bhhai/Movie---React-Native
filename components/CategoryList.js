@@ -5,6 +5,7 @@ import {
   Image,
   ImageBackground,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableWithoutFeedback,
@@ -17,19 +18,25 @@ import MovieCard from './MovieCard';
 
 let HEIGHT = Dimensions.get('window').height;
 let WIDTH = Dimensions.get('window').width;
-const CategoryList = () => {
-  const newSeasonScrollX = useRef(new Animated.Value(0)).current;
-
+const CategoryList = ({category, type, navigation}) => {
   const [movies, setMovies] = useState([]);
-
   useEffect(() => {
     const getMovies = async () => {
-      const params = {page: 1};
+      const params = {};
+      let response = null;
       try {
-        var response = await tmdbApi.getMoviesList(movieType.popular, {
-          params,
-        });
-        console.log(response);
+        switch (category) {
+          case 'movie':
+            response = await tmdbApi.getMoviesList(type, {
+              params,
+            });
+            break;
+          default:
+            response = await tmdbApi.getTvList(type, {
+              params,
+            });
+            break;
+        }
         setMovies(response.results);
       } catch (error) {
         console.log('Fetch data error: ', error);
@@ -39,19 +46,21 @@ const CategoryList = () => {
     getMovies();
   }, []);
   return (
-    <SafeAreaView>
-      {/* <FlatList
-        data={moviesList}
-        renderItem={({item}) => <MovieCard img={item.poster_path} />}
-        keyExtractor={item => item.poster_path || item.backdrop_path}
-        horizontal
-      /> */}
-      {movies.map((item, i) => (
-        <MovieCard
-          img={`${apiConfig.w500Image(item.poster_path || item.backdrop_path)}`}
-          key={i}
-        />
-      ))}
+    <SafeAreaView style={{marginVertical: 25}}>
+      <ScrollView horizontal>
+        {movies.map((item, i) => (
+          <MovieCard
+            key={i}
+            navigation={navigation}
+            id={item.id}
+            name={item.title || item.name}
+            data={item}
+            img={`${apiConfig.w500Image(
+              item.poster_path || item.backdrop_path,
+            )}`}
+          />
+        ))}
+      </ScrollView>
     </SafeAreaView>
   );
 };
