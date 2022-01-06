@@ -18,7 +18,7 @@ import MovieCard from './MovieCard';
 
 let HEIGHT = Dimensions.get('window').height;
 let WIDTH = Dimensions.get('window').width;
-const CategoryList = ({category, type, navigation}) => {
+const CategoryList = ({category, type}) => {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     const getMovies = async () => {
@@ -51,7 +51,6 @@ const CategoryList = ({category, type, navigation}) => {
         {movies.map((item, i) => (
           <MovieCard
             key={i}
-            navigation={navigation}
             id={item.id}
             name={item.title || item.name}
             data={item}

@@ -11,6 +11,7 @@ import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import tmdbApi, {category, movieType} from '../api/tmdbApi';
 import ButtonComponent from '../components/ButtonComponent';
 import CategoryList from '../components/CategoryList';
+import Header from '../components/Header';
 import HomeSlide from '../components/HomeSlide';
 
 let HEIGHT = Dimensions.get('window').height;
@@ -43,6 +44,7 @@ const Home = ({navigation}) => {
   );
   return (
     <SafeAreaView style={styles.container}>
+      <Header />
       <ScrollView>
         <View>
           <HomeSlide movies={movies} />

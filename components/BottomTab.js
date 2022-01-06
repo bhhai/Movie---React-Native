@@ -1,7 +1,10 @@
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React, {Component} from 'react';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {createStackNavigator} from 'react-navigation-stack';
 import Home from '../screens/Home';
+import MovieDetail from '../screens/MovieDetail';
 import Movies from '../screens/Movies';
 import TvSeries from '../screens/TvSeries';
 
@@ -16,7 +19,7 @@ export default class BottomTab extends Component {
         barStyle={{backgroundColor: 'rgba(0, 0, 0, .7)'}}>
         <Tab.Screen
           name="Home"
-          component={Home}
+          component={TabOne}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({color}) => (
@@ -62,4 +65,28 @@ export default class BottomTab extends Component {
       </Tab.Navigator>
     );
   }
+}
+
+const HomeStack = createNativeStackNavigator();
+function TabOne() {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen
+        name="Home"
+        component={Home}
+        options={{headerShown: false}}
+      />
+      <HomeStack.Screen
+        name="MovieDetail"
+        component={MovieDetail}
+        options={{
+          title: 'Movie Detail',
+          headerStyle: {
+            backgroundColor: '#0f0f0f',
+          },
+          headerTintColor: '#fff',
+        }}
+      />
+    </HomeStack.Navigator>
+  );
 }

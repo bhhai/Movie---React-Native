@@ -34,27 +34,14 @@ const movies = [
 
 const Stack = createNativeStackNavigator();
 
-const App = ({navigation}) => {
+const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Home1" component={Home1} />
-        <Stack.Screen name="MovieDetail" component={MovieDetail} />
-      </Stack.Navigator>
+      <BottomTab />
     </NavigationContainer>
   );
 };
 
 export default App;
-
-const Home1 = ({navigation}) => {
-  return (
-    <>
-      <Header />
-      <Home navigation={navigation} />
-      <BottomTab />
-    </>
-  );
-};
 
 const styles = StyleSheet.create({});

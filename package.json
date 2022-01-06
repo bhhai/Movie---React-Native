@@ -5,7 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "test": "jest",
     "lint": "eslint ."
   },
@@ -18,6 +18,7 @@
     "react-native": "0.66.3",
     "react-native-elements": "^3.4.2",
     "react-native-image-overlay": "^0.1.2",
+    "react-native-linear-gradient": "^2.5.6",
     "react-native-paper": "^4.10.1",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.9.0",

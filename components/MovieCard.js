@@ -1,8 +1,9 @@
+import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity} from 'react-native';
 
-const MovieCard = ({img, name, navigation, id, data}) => {
-  console.log(img);
+const MovieCard = ({img, name, id, data}) => {
+  const navigation = useNavigation();
   return (
     <TouchableOpacity
       style={{marginRight: 25}}
