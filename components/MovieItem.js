@@ -28,7 +28,7 @@ const MovieItem = ({item, categories}) => {
         }}
         style={{
           width: WIDTH * 0.45,
-          height: 250,
+          minHeight: 250,
           borderRadius: 20,
           resizeMode: 'cover',
         }}

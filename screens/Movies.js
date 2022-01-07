@@ -9,7 +9,7 @@ const Movies = () => {
     <ScrollView>
       <PageHeader title="Movies" />
 
-      <MovieGrid keyword="sing" category={category.movie} />
+      <MovieGrid category={category.movie} />
     </ScrollView>
   );
 };

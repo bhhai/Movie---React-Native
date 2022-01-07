@@ -11,6 +11,7 @@ import {
 import AntDesign from 'react-native-vector-icons/FontAwesome5';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {useNavigation} from '@react-navigation/native';
+import ButtonComponent from './ButtonComponent';
 const Stack = createNativeStackNavigator();
 const image = {
   uri: 'https://www.whats-on-netflix.com/wp-content/uploads/2021/08/netflix-library-photo-scaled.jpg',
@@ -45,7 +46,7 @@ export default function dangnhap() {
               name="user"
               size={24}
               color="white"
-              style={{position: 'relative', top: 10, left: 1}}
+              style={{marginRight: 5}}
             />
             <TextInput
               style={styles.inputUser}
@@ -64,7 +65,7 @@ export default function dangnhap() {
               name="lock"
               size={24}
               color="white"
-              style={{position: 'relative', top: 10, left: 1}}
+              style={{marginRight: 5}}
             />
             <TextInput
               style={styles.inputUser}
@@ -107,10 +108,10 @@ export default function dangnhap() {
               alignItems: 'center',
               borderRadius: 45,
             }}>
-            <Button
+            <ButtonComponent
               title="ĐĂNG NHẬP"
-              color="#000"
-              onPress={() => navigation.navigate('Home')}
+              color="#fff"
+              onClick={() => navigation.navigate('Home')}
             />
           </View>
         </View>
@@ -170,11 +171,12 @@ const styles = StyleSheet.create({
   inputUser: {
     width: 300,
     height: 40,
-    marginTop: 10,
+    marginTop: 0,
     borderBottomWidth: 1,
     fontSize: 16,
     backgroundColor: 'white',
     borderRadius: 45,
+    paddingHorizontal: 20,
   },
   Image: {
     width: 150,

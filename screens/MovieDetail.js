@@ -50,9 +50,22 @@ const MovieDetail = ({route, navigation}) => {
               fontSize: 18,
               paddingHorizontal: 20,
             }}>
-            Release date: {data.release_date}
+            Point: {data.vote_average} ({data.vote_count} votes)
           </Text>
-          <Text>Vote: {data.vote_average}</Text>
+          <Text
+            style={{
+              position: 'absolute',
+              bottom: 40,
+              color: '#fff',
+              fontSize: 18,
+              marginHorizontal: 20,
+              borderWidth: 1,
+              borderColor: '#fff',
+              paddingHorizontal: 15,
+              borderRadius: 10,
+            }}>
+            {data.original_language}
+          </Text>
         </ImageBackground>
         <Text
           style={{

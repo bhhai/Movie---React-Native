@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useRef, useState} from 'react';
 import {ImageBackground, TouchableWithoutFeedback} from 'react-native';
 import {Animated, Dimensions, StyleSheet, Text, View} from 'react-native';
@@ -10,6 +11,7 @@ let WIDTH = Dimensions.get('window').width;
 
 const HomeSlide = ({movies}) => {
   const newSeasonScrollX = useRef(new Animated.Value(0)).current;
+  const navigation = useNavigation();
 
   return (
     <Animated.FlatList
@@ -93,14 +95,24 @@ const HomeSlide = ({movies}) => {
                   icon="play-circle"
                   backColor="red"
                   color="#fff"
-                  onClick={() => console.log('btn clicked')}
+                  onClick={() =>
+                    navigation.navigate('MovieDetail', {
+                      id: item.id,
+                      data: item,
+                    })
+                  }
                 />
                 <ButtonComponent
                   title="View detail"
                   icon="info-circle"
                   color="#000"
                   backColor="#ccc"
-                  onClick={() => console.log('btn2 clicked')}
+                  onClick={() =>
+                    navigation.navigate('MovieDetail', {
+                      id: item.id,
+                      data: item,
+                    })
+                  }
                 />
               </View>
             </View>
