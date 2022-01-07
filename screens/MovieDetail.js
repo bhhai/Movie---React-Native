@@ -1,20 +1,16 @@
-import React, {useEffect, useState} from 'react';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-
+import React, {useState, useCallback} from 'react';
 import {
   Dimensions,
-  Image,
   ImageBackground,
-  StyleSheet,
+  SafeAreaView,
   ScrollView,
+  StyleSheet,
   Text,
   View,
-  TouchableOpacity,
-  SafeAreaView,
 } from 'react-native';
 import apiConfig from '../api/apiConfig';
-import Cast from '../components/Cast';
 import {category, movieType} from '../api/tmdbApi';
+import Cast from '../components/Cast';
 import CategoryList from '../components/CategoryList';
 import Footer from '../components/Footer';
 
@@ -22,8 +18,6 @@ const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 const MovieDetail = ({route, navigation}) => {
   const {id, data} = route.params;
-  const [star, setStar] = useState([]);
-  console.log(data);
 
   return (
     <SafeAreaView>
@@ -88,9 +82,11 @@ const MovieDetail = ({route, navigation}) => {
           <Cast id={id} category="movie" />
         </View>
         <View style={{marginVertical: 30, marginHorizontal: 20}}>
-          <Text style={{color: '#fff', fontSize: 22}}>{data.title}</Text>
+          <Text style={{color: '#fff', fontSize: 22}}>
+            {data.title || data.name}
+          </Text>
           <Text style={{color: '#fff', marginVertical: 10}}>
-            {data.release_date}
+            {data.release_date || 'Comming soon'}
           </Text>
           <ImageBackground
             source={{
@@ -112,7 +108,7 @@ const MovieDetail = ({route, navigation}) => {
             }}>
             Comming soon
           </Text>
-          <CategoryList category={category.tv} type={movieType.top_rated} />
+          <CategoryList category={category.movie} type={movieType.top_rated} />
         </View>
         <Footer />
       </ScrollView>

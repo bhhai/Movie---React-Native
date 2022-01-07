@@ -44,7 +44,7 @@ const Footer = () => {
             color: '#fff',
             textAlign: 'center',
           }}>
-          Made by HoangHai
+          Made by Hai and Trieu
         </Text>
       </ImageBackground>
     </View>

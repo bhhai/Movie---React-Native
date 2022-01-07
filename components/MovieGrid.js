@@ -129,7 +129,12 @@ const styles = StyleSheet.create({});
 function MovieSearch({text}) {
   const [keyword, setKeyword] = useState('');
   return (
-    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+    <View
+      style={{
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginHorizontal: 10,
+      }}>
       <TextInput
         style={{
           backgroundColor: '#000',
@@ -146,7 +151,7 @@ function MovieSearch({text}) {
         value={keyword}
         placeholder="Type here to search..."
       />
-      <Button title="Search" />
+      <Button color={'red'} title="Search" />
     </View>
   );
 }

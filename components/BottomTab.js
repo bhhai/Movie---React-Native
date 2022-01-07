@@ -8,6 +8,8 @@ import MovieDetail from '../screens/MovieDetail';
 import Movies from '../screens/Movies';
 import TvSeries from '../screens/TvSeries';
 import signin from '../components/signin';
+import netflix from '../screens/netflix';
+import signup from '../screens/signup';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -63,6 +65,21 @@ export default class BottomTab extends Component {
             ),
           }}
         />
+        <Tab.Screen
+          name="netflix"
+          component={netflix}
+          options={{
+            tabBarLabel: 'Comming soon',
+            tabBarIcon: ({color}) => (
+              <FontAwesome5
+                name={'photo-video'}
+                color={color}
+                size={26}
+                style={{width: 33}}
+              />
+            ),
+          }}
+        />
       </Tab.Navigator>
     );
   }
@@ -91,6 +108,11 @@ function TabOne() {
       <HomeStack.Screen
         name="signin"
         component={signin}
+        options={{headerShown: false}}
+      />
+      <HomeStack.Screen
+        name="signup"
+        component={signup}
         options={{headerShown: false}}
       />
     </HomeStack.Navigator>
