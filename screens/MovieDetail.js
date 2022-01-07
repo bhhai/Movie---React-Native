@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import VideoPlayer from 'react-native-video-player';
 
 import {
   Dimensions,
@@ -14,12 +15,18 @@ import {
 } from 'react-native';
 import apiConfig from '../api/apiConfig';
 import Cast from '../components/Cast';
+import YouTube from 'react-native-youtube';
+import {category, movieType} from '../api/tmdbApi';
+import CategoryList from '../components/CategoryList';
+import Footer from '../components/Footer';
 
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 const MovieDetail = ({route, navigation}) => {
   const {id, data} = route.params;
+  const [star, setStar] = useState([]);
   console.log(data);
+
   return (
     <SafeAreaView>
       <ScrollView style={{backgroundColor: '#0f0f0f'}}>
@@ -49,21 +56,54 @@ const MovieDetail = ({route, navigation}) => {
           </Text>
           <Text>Vote: {data.vote_average}</Text>
         </ImageBackground>
+        <Text
+          style={{
+            color: '#fff',
+            fontSize: 24,
+            marginHorizontal: 20,
+            marginVertical: 20,
+          }}>
+          Overview
+        </Text>
+        <Text
+          style={{
+            color: '#fff',
+            fontSize: 18,
+            paddingHorizontal: 20,
+          }}>
+          {data.overview}
+        </Text>
         <View>
           <Cast id={id} category="movie" />
         </View>
         <View style={{marginVertical: 30, marginHorizontal: 20}}>
           <Text style={{color: '#fff', fontSize: 22}}>{data.title}</Text>
-
-          <Image
+          <Text style={{color: '#fff', marginVertical: 10}}>
+            {data.release_date}
+          </Text>
+          <ImageBackground
             source={{
               uri: `${apiConfig.originalImage(
                 data.backdrop_path || data.poster_path,
               )}`,
             }}
-            style={{height: 250, resizeMode: 'center', marginVertical: 20}}
-          />
+            style={{
+              height: 250,
+              resizeMode: 'center',
+              marginVertical: 20,
+            }}>
+            <View style={styles.overlay}></View>
+          </ImageBackground>
+          <Text
+            style={{
+              color: '#fff',
+              fontSize: 24,
+            }}>
+            Comming soon
+          </Text>
+          <CategoryList category={category.tv} type={movieType.top_rated} />
         </View>
+        <Footer />
       </ScrollView>
     </SafeAreaView>
   );

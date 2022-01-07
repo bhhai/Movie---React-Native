@@ -11,6 +11,7 @@ import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import tmdbApi, {category, movieType} from '../api/tmdbApi';
 import ButtonComponent from '../components/ButtonComponent';
 import CategoryList from '../components/CategoryList';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import HomeSlide from '../components/HomeSlide';
 
@@ -94,6 +95,7 @@ const Home = ({navigation}) => {
             navigation={navigation}
           />
         </View>
+        <Footer />
       </ScrollView>
     </SafeAreaView>
   );
