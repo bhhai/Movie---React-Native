@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import VideoPlayer from 'react-native-video-player';
 
 import {
   Dimensions,
@@ -15,7 +14,6 @@ import {
 } from 'react-native';
 import apiConfig from '../api/apiConfig';
 import Cast from '../components/Cast';
-import YouTube from 'react-native-youtube';
 import {category, movieType} from '../api/tmdbApi';
 import CategoryList from '../components/CategoryList';
 import Footer from '../components/Footer';

@@ -9,8 +9,10 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
 const Header = () => {
+  const navigation = useNavigation();
   return (
     <View>
       <View style={styles.container}>
@@ -30,7 +32,7 @@ const Header = () => {
             Bi Movie
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('signin')}>
           <FontAwesome5 name={'user'} size={26} color={'#fff'} />
         </TouchableOpacity>
       </View>
