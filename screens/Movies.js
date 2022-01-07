@@ -1,11 +1,16 @@
-import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import React, {useState} from 'react';
+import {ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
+import {category} from '../api/tmdbApi';
+import MovieGrid from '../components/MovieGrid';
+import PageHeader from '../components/PageHeader';
 
 const Movies = () => {
   return (
-    <View>
-      <Text>Movies screen</Text>
-    </View>
+    <ScrollView>
+      <PageHeader title="Movies" />
+
+      <MovieGrid keyword="sing" category={category.movie} />
+    </ScrollView>
   );
 };
 

@@ -7,6 +7,7 @@ import Home from '../screens/Home';
 import MovieDetail from '../screens/MovieDetail';
 import Movies from '../screens/Movies';
 import TvSeries from '../screens/TvSeries';
+import dangnhap from './signin';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -74,6 +75,11 @@ function TabOne() {
       <HomeStack.Screen
         name="Home"
         component={Home}
+        options={{headerShown: false}}
+      />
+      <HomeStack.Screen
+        name="signin"
+        component={dangnhap}
         options={{headerShown: false}}
       />
       <HomeStack.Screen
